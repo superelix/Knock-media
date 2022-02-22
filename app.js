@@ -3,14 +3,8 @@ const app = express()
 const mongoose  = require('mongoose')
 const PORT = process.env.PORT || 5000
 
-//ghbomMyb70Doo4Ly password of mongodb
-//assigned cloud : name roxypro39
-//cloudinary  password Aniruddha1@ ,API KEY-269744223932282,upload preset name-insta-clone
-//mydb_text database name
-
-
-
 const {MONGOURI} = require('./config/keys')
+
 
 mongoose.connect(MONGOURI,{
     useNewUrlParser:true,
@@ -19,10 +13,10 @@ mongoose.connect(MONGOURI,{
 })
 
 mongoose.connection.on('connected',()=>{
-    console.log("conneted to mongo yeahh")
+    console.log("Conneted to mongodb .")
 })
 mongoose.connection.on('error',(err)=>{
-    console.log("err connecting",err)
+    console.log("Connection Error",err)
 })
 
 require('./models/user')

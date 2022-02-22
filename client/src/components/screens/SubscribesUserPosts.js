@@ -141,12 +141,12 @@ const Home  = ()=>{
                             
                            
                                 <h6>{item.likes.length} likes</h6>
-                                <h6>{item.title}</h6>
+                                <h6 style={{fontWeight:"bold"}}>{item.title}</h6>
                                 <p>{item.body}</p>
                                 {
                                     item.comments.map(record=>{
                                         return(
-                                        <h6 key={record._id}><span style={{fontWeight:"500"}}>{record.postedBy.name}</span> {record.text}</h6>
+                                        <h6 key={record._id}><span style={{fontWeight:"bold"}}>{record.postedBy.name}</span> {record.text}</h6>
                                         )
                                     })
                                 }

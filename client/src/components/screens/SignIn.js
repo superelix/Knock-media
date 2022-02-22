@@ -2,6 +2,7 @@ import React,{useState,useContext,} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import {UserContext} from '../../App'
 import M from 'materialize-css'
+
 const SignIn  = ()=>{
     const {state,dispatch} = useContext(UserContext)
     const history = useHistory()
@@ -41,7 +42,7 @@ const SignIn  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Instagram</h2>
+            <h2>KNOCK</h2>
             <input
             type="text"
             placeholder="email"
@@ -54,16 +55,16 @@ const SignIn  = ()=>{
             value={password}
             onChange={(e)=>setPasword(e.target.value)}
             />
-            <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            <button className="btn waves-effect waves-light #9575cd deep-purple lighten-2"
             onClick={()=>PostData()}
             >
                 Login
             </button>
             <h5>
-                <Link to="/signup">Dont have an account ?</Link>
+                <Link to="/signup">Sign up</Link>
             </h5>
             <h6>
-                <Link to="/reset">Forgot password ?</Link>
+                <Link to="/reset">Reset password </Link>
             </h6>
     
         </div>

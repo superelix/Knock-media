@@ -104,20 +104,20 @@ const Profile  = ()=>{
                    {showfollow?
                    <button style={{
                        margin:"10px"
-                   }} className="btn waves-effect waves-light #64b5f6 blue darken-1"
+                   }} className="btn waves-effect waves-light #9575cd deep-purple lighten-2"
                     onClick={()=>followUser()}
                     >
-                        Follow
+                        follow
                     </button>
                     : 
                     <button
                     style={{
                         margin:"10px"
                     }}
-                    className="btn waves-effect waves-light #64b5f6 blue darken-1"
+                    className="btn waves-effect waves-light #9575cd deep-purple lighten-2"
                     onClick={()=>unfollowUser()}
                     >
-                        UnFollow
+                        unfollow
                     </button>
                     }
                    
@@ -140,7 +140,7 @@ const Profile  = ()=>{
        </div>
        
        
-       : <h2>loading...!</h2>}
+       : <h2>..fetching..</h2>}
        
        </>
    )

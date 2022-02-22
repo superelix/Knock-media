@@ -2,9 +2,18 @@ const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require('../config/keys')
 const mongoose = require('mongoose')
 const User = mongoose.model("User")
+
 module.exports = (req,res,next)=>{
     const {authorization} = req.headers
-    //authorization === Bearer ewefwegwrherhe
+    /*
+   ---Used as key value pair in header:
+    authorization  [key] 
+    "Bearer "+ <token_returned_after_signin>[value]
+
+    ---It matched in the middleware if the token has been generated from the JWT_SECRET or not.
+    ---The token is generated using the _id of saved user and JWT_SECRET.
+    ---Concept is used to access the protected resource.
+   */
     if(!authorization){
        return res.status(401).json({error:"you must be logged in"})
     }

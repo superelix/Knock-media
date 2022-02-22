@@ -2,6 +2,7 @@ import React,{useContext,useRef,useEffect,useState} from 'react'
 import {Link ,useHistory} from 'react-router-dom'
 import {UserContext} from '../App'
 import M from 'materialize-css'
+
 const NavBar = ()=>{
     const  searchModal = useRef(null)
     const [search,setSearch] = useState('')
@@ -15,9 +16,9 @@ const NavBar = ()=>{
        if(state){
            return [
             <li key="1"><i  data-target="modal1" className="large material-icons modal-trigger" style={{color:"black"}}>search</i></li>,
-            <li key="2"><Link to="/profile">Profile</Link></li>,
-            <li key="3"><Link to="/create">Create Post</Link></li>,
-            <li key="4"><Link to="/myfollowingpost">My following Posts</Link></li>,
+            <li key="2"><Link to="/profile">profile</Link></li>,
+            <li key="3"><Link to="/create">create post</Link></li>,
+            <li key="4"><Link to="/myfollowingpost">my following  posts</Link></li>,
             <li  key="5">
              <button className="btn #c62828 red darken-3"
             onClick={()=>{
@@ -26,7 +27,7 @@ const NavBar = ()=>{
               history.push('/signin')
             }}
             >
-                Logout
+                logout
             </button>
             </li>
          
@@ -34,8 +35,8 @@ const NavBar = ()=>{
            ]
        }else{
          return [
-          <li  key="6"><Link to="/signin">Signin</Link></li>,
-          <li  key="7"><Link to="/signup">Signup</Link></li>
+          <li  key="6"><Link to="/signin">signin</Link></li>,
+          <li  key="7"><Link to="/signup">signup</Link></li>
          
          ]
        }
@@ -59,8 +60,8 @@ const NavBar = ()=>{
      }
     return(
         <nav>
-        <div className="nav-wrapper white">
-          <Link to={state?"/":"/signin"} className="brand-logo left">Instagram</Link>
+        <div className="nav-wrapper">
+          <Link to={state?"/":"/signin"} className="brand-logo left">KNOCK</Link>
           <ul id="nav-mobile" className="right">
              {renderList()}
   

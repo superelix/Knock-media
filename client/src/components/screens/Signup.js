@@ -71,7 +71,7 @@ const SignIn  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Instagram</h2>
+            <h2>KNOCK</h2>
             <input
             type="text"
             placeholder="name"
@@ -91,7 +91,7 @@ const SignIn  = ()=>{
             onChange={(e)=>setPasword(e.target.value)}
             />
             <div className="file-field input-field">
-            <div className="btn #64b5f6 blue darken-1">
+            <div className="btn #9575cd deep-purple lighten-2">
                 <span>Upload pic</span>
                 <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
             </div>
@@ -99,19 +99,14 @@ const SignIn  = ()=>{
                 <input className="file-path validate" type="text" />
             </div>
             </div>
-            <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            <button className="btn waves-effect waves-light #9575cd deep-purple lighten-2"
             onClick={()=>PostData()}
             >
-                SignUP
+                Register
             </button>
             <h5>
-                <Link to="/signin">Already have an account ?</Link>
+                <Link to="/signin">Sign in</Link>
             </h5>
-             
-               
-         
-            
-    
         </div>
       </div>
    )

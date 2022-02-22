@@ -5,29 +5,32 @@ const User = mongoose.model("User")
 const crypto = require('crypto')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const {JWT_SECRET} = require('../config/keys')
+const {JWT_SECRET,PASSWORD} = require('../config/keys')
 const requireLogin = require('../middleware/requireLogin')
 const nodemailer = require('nodemailer')
-const sendgridTransport = require('nodemailer-sendgrid-transport')
-const {SENDGRID_API,EMAIL} = require('../config/keys')
-//
+//const sendgridTransport = require('nodemailer-sendgrid-transport')
 
 
-const transporter = nodemailer.createTransport(sendgridTransport({
+
+/*
+const transporter = nodemailer.createTransport({
+    service:"gmail",
     auth:{
-        api_key:SENDGRID_API
+        user:"aniruddhanath65@gmail.com",
+        password:PASSWORD
     }
-}))
+})
 
+*/
 router.post('/signup',(req,res)=>{
   const {name,email,password,pic} = req.body 
   if(!email || !password || !name){
-     return res.status(422).json({error:"please add all the fields"})
+     return res.status(422).json({error:"Please add all the fields"})
   }
   User.findOne({email:email})
   .then((savedUser)=>{
       if(savedUser){
-        return res.status(422).json({error:"user already exists with that email"})
+        return res.status(422).json({error:"User already exists with that email"})
       }
       bcrypt.hash(password,12)
       .then(hashedpassword=>{
@@ -40,13 +43,21 @@ router.post('/signup',(req,res)=>{
     
             user.save()
             .then(user=>{
-                // transporter.sendMail({
-                //     to:user.email,
-                //     from:"no-reply@insta.com",
-                //     subject:"signup success",
-                //     html:"<h1>welcome to instagram</h1>"
-                // })
-                res.json({message:"saved successfully"})
+          /*      
+              transporter.sendMail({
+                    to:user.email,
+                    from:"no-reply@knock.com",
+                    subject:"signup success",
+                    text:"Thank you for showing your interest to Knock"
+                 },(err,res)=>{
+                     if(err){
+                         console.log(err)
+                     }else{
+                         console.log('Mail Successfully sent')
+                     }
+                 })
+           */
+                res.json({message:"Saved successfully"})
             })
             .catch(err=>{
                 console.log(err)
@@ -73,7 +84,6 @@ router.post('/signin',(req,res)=>{
         bcrypt.compare(password,savedUser.password)
         .then(doMatch=>{
             if(doMatch){
-                // res.json({message:"successfully signed in"})
                const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
                const {_id,name,email,followers,following,pic} = savedUser
                res.json({token,user:{_id,name,email,followers,following,pic}})
@@ -103,7 +113,7 @@ router.post('/reset-password',(req,res)=>{
              user.resetToken = token
              user.expireToken = Date.now() + 3600000
              user.save().then((result)=>{
-                 transporter.sendMail({
+               /*  transporter.sendMail({
                      to:user.email,
                      from:"no-replay@insta.com",
                      subject:"password reset",
@@ -111,7 +121,7 @@ router.post('/reset-password',(req,res)=>{
                      <p>You requested for password reset</p>
                      <h5>click in this <a href="${EMAIL}/reset/${token}">link</a> to reset password</h5>
                      `
-                 })
+                 })*/
                  res.json({message:"check your email"})
              })
 

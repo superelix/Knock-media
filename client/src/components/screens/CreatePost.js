@@ -1,12 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import M from 'materialize-css'
 import {useHistory} from 'react-router-dom'
-const CretePost = ()=>{
+
+const CreatePost = ()=>{
     const history = useHistory()
     const [title,setTitle] = useState("")
     const [body,setBody] = useState("")
     const [image,setImage] = useState("")
     const [url,setUrl] = useState("")
+    
     useEffect(()=>{
        if(url){
         fetch("/createpost",{
@@ -51,9 +53,7 @@ const CretePost = ()=>{
        })
        .catch(err=>{
            console.log(err)
-       })
-
-    
+       })    
    }
  
 
@@ -79,7 +79,7 @@ const CretePost = ()=>{
             onChange={(e)=>setBody(e.target.value)}
              />
            <div className="file-field input-field">
-            <div className="btn #64b5f6 blue darken-1">
+            <div className="btn #9575cd deep-purple lighten-2">
                 <span>Uplaod Image</span>
                 <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
             </div>
@@ -87,7 +87,7 @@ const CretePost = ()=>{
                 <input className="file-path validate" type="text" />
             </div>
             </div>
-            <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            <button className="btn waves-effect waves-light #9575cd deep-purple lighten-2"
             onClick={()=>postDetails()}
             
             >
@@ -99,4 +99,4 @@ const CretePost = ()=>{
 }
 
 
-export default CretePost
+export default CreatePost
