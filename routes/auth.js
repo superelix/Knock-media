@@ -103,7 +103,7 @@ router.post('/reset-password',(req,res)=>{
              user.resetToken = token
              user.expireToken = Date.now() + 3600000
              user.save().then((result)=>{
-                 transporter.sendMail({
+               /*  transporter.sendMail({
                      to:user.email,
                      from:"no-replay@insta.com",
                      subject:"password reset",
@@ -112,6 +112,7 @@ router.post('/reset-password',(req,res)=>{
                      <h5>click in this <a href="${EMAIL}/reset/${token}">link</a> to reset password</h5>
                      `
                  })
+                 */
                  res.json({message:"check your email"})
              })
 
